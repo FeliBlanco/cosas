@@ -1,0 +1,13 @@
+/* No hice eso de que el color cambie segun los parámetros */
+
+CMD:id(playerid, params[])
+{
+	new id;
+	if(sscanf(params, "r", id)) return 1;
+	if(!PlayerConectado(id)) return SendClientMessage(playerid, 0xFFFFFFAA, "No se encontró ningún jugador.");
+	SendClientMessage(playerid, 0xFFFFFFAA, " ");
+	PC_EmulateCommand(playerid, "/hora");
+	SendClientMessageEx(playerid, 0xFFFFFFAA, "El jugador {00CCFF}%s{FFFFFF} tiene el ID: {FF0000}%d{FFFFFF}. (Nivel: {e77d31}%d{FFFFFF})", NombreJugador(id), id, PlayerInfo[id][pNivel]);
+	SendClientMessageEx(playerid, 0xFFFFFFAA, "Detalles (Ping: {00cbf7}%d{FFFFFF} | P: 0.23 | Cod: {939393}#%d{FFFFFF} | Ping propio: {f7e300}%d{FFFFFF})", GetPlayerPing(id), PlayerInfo[playerid][pID], GetPlayerPing(playerid));
+	return 1;
+}
