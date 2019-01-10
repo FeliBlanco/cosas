@@ -1,0 +1,91 @@
+new Float:BarrerasTren[][12] =
+{
+	{2205.699951, -1651.800049, 15.410000, 0.000000, 30.000000, 75.129997, 2220.429932, -1642.599976, 15.410000, 0.000000, -30.000000, 75.139999},/* Barreras GYM */
+	{2206.669922, -1725.920044, 13.480499, 0.000000, -30.000000, 90.000000, 2194.530029, -1738.849976, 13.480499, 0.000000, 30.000000, 90.000000},
+	{2206.699951, -1887.800049, 13.899500, 0.000000, -30.000000, 90.000000, 2194.560059, -1901.170044, 13.879500, 0.000000, 30.000000, 90.000000}, /* Casi llegando a estacion ls */
+	{1967.280029, -1961.650024, 13.859500, 0.000000, -30.000000, 0.000000, 1956.010010, -1950.130005, 13.839500, 0.000000, -30.000000, 180.000000}, /* Llegando a estacion ls */
+	{-1988.089966, -587.090027, 25.969500, 0.000000, -30.000000, 270.000000, -1976.250000, -573.109985, 25.969500, 0.000000, -30.000000, 90.000000}, /* Llegando a SF */
+	{-1960.859985, -246.020004, 25.840500, 0.000000, -30.000000, 262.769989, -1946.040039, -234.039993, 25.660500, 0.000000, -30.000000, 88.000000},/* Llegando a estacion SF */
+	{733.780029, 1844.140015, 5.320000, 0.000000, 30.000000, 86.400002, 746.409973, 1854.739990, 5.320000, 0.000000, -30.000000, 86.400002}, /* LV */
+	{733.549988, 1908.079956, 5.320000, 0.000000, 30.000000, 87.779999, 746.099976, 1922.239990, 5.320000, 0.000000, -30.000000, 87.779999},
+	{1241.540039, 2639.520020, 10.770000, 0.000000, 30.000000, 359.380005, 1253.060059, 2628.830078, 10.770000, 0.000000, -30.000000, 359.380005},
+	{1581.579956, 2639.500000, 10.930000, 0.000000, 30.000000, 0.000000, 1593.099976, 2628.830078, 10.930000, 0.000000, -30.000000, 0.000000},
+	{1901.900024, 2697.340088, 11.030000, 0.000000, 30.000000, 0.000000, 1913.380005, 2690.989990, 11.030000, 0.000000, -30.000000, 0.000000},
+	{2081.580078, 2697.340088, 10.980000, 0.000000, 30.000000, 0.000000, 2093.080078, 2690.989990, 10.980000, 0.000000, -30.000000, 0.000000},
+	{2380.550049, 2699.489990, 11.190000, 0.000000, 30.000000, 359.100006, 2394.250000, 2684.830078, 11.190000, 0.000000, -30.000000, 359.100006},
+	{2757.770020, 907.530029, 10.950000, 0.000000, 30.000000, 90.290001, 2773.510010, 920.909973, 10.670000, 0.000000, -30.000000, 90.290001},
+	{2293.000000, -1144.609985, 26.759501, -0.040000, -30.000000, 90.000000, 2281.179932, -1155.079956, 26.779501, 0.000000, 30.000000, 90.000000},
+	{2292.479980, -1378.739990, 24.130499, 0.000000, -30.000000, 90.000000, 2280.820068, -1389.979980, 24.030500, 0.000000, 30.000000, 90.000000},
+	{2282.570068, -1478.540039, 22.951000, 0.000000, -30.000000, 90.000000, 2267.629883, -1489.709961, 22.730999, 0.000000, 30.000000, 84.519997}
+};
+
+new BarrerasZona[sizeof(BarrerasTren)], ObjetoBarreras[sizeof(BarrerasTren)][2];
+
+/* */
+
+public OnGameModeInit()
+{
+	for(new i; i < sizeof(BarrerasTren); i++)
+	{
+		ObjetoBarreras[i][0] = CreateDynamicObject(968, BarrerasTren[i][0], BarrerasTren[i][1], BarrerasTren[i][2], BarrerasTren[i][3], BarrerasTren[i][4], BarrerasTren[i][5]);
+		ObjetoBarreras[i][1] = CreateDynamicObject(968, BarrerasTren[i][6], BarrerasTren[i][7], BarrerasTren[i][8], BarrerasTren[i][9], BarrerasTren[i][10], BarrerasTren[i][11]);
+        BarrerasZona[i] = CreateDynamicCircle(BarrerasTren[i][0], BarrerasTren[i][1], 130);
+	}
+  return 1;
+  }
+  
+  /* */
+  
+  public OnPlayerEnterDynamicArea(playerid, areaid)
+{
+	if((IsPlayerInVehicle(playerid, Tren[0]) || IsPlayerInVehicle(playerid, Tren[1]) || IsPlayerInVehicle(playerid, Tren[2])) && GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
+	{
+	    for(new i; i < sizeof(BarrerasTren); i++)
+	    {
+			if(areaid == BarrerasZona[i])
+			{
+			    new Float:pos[2];
+			    if(BarrerasTren[i][4] < 0) pos[0] = -90;
+			    else pos[0] = 90;
+			    if(BarrerasTren[i][10] < 0) pos[1] = -90;
+			    else pos[1] = 90;
+			    MoveDynamicObject(ObjetoBarreras[i][0], BarrerasTren[i][0], BarrerasTren[i][1], BarrerasTren[i][2]-0.0001, 0.000100, BarrerasTren[i][3], pos[0], BarrerasTren[i][5]);
+                MoveDynamicObject(ObjetoBarreras[i][1], BarrerasTren[i][6], BarrerasTren[i][7], BarrerasTren[i][8]-0.0001, 0.000100, BarrerasTren[i][9], pos[1], BarrerasTren[i][11]);
+				foreach(new p : Player)
+				{
+				    if(!IsPlayerInRangeOfPoint(p, 50, BarrerasTren[i][0], BarrerasTren[i][1], BarrerasTren[i][2])) continue;
+					PlayAudioStreamForPlayer(p, "sonidos.fenixzone.net/Campanas.mp3", BarrerasTren[i][0], BarrerasTren[i][1], BarrerasTren[i][2], 50, 1);
+				}
+			    break;
+			}
+		}
+	}
+	return 1;
+}
+
+public OnPlayerLeaveDynamicArea(playerid, areaid)
+{
+	if((IsPlayerInVehicle(playerid, Tren[0]) || IsPlayerInVehicle(playerid, Tren[1]) || IsPlayerInVehicle(playerid, Tren[2])) && GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
+	{
+	    for(new i; i < sizeof(BarrerasTren); i++)
+	    {
+			if(areaid == BarrerasZona[i])
+			{
+			    new Float:pos[2];
+			    if(BarrerasTren[i][4] < 0) pos[0] = -30;
+			    else pos[0] = 30;
+			    if(BarrerasTren[i][10] < 0) pos[1] = -30;
+			    else pos[1] = 30;
+			    MoveDynamicObject(ObjetoBarreras[i][0], BarrerasTren[i][0], BarrerasTren[i][1], BarrerasTren[i][2]+0.0001, 0.000100, BarrerasTren[i][3], pos[0], BarrerasTren[i][5]);
+                MoveDynamicObject(ObjetoBarreras[i][1], BarrerasTren[i][6], BarrerasTren[i][7], BarrerasTren[i][8]+0.0001, 0.000100, BarrerasTren[i][9], pos[1], BarrerasTren[i][11]);
+				foreach(new p : Player)
+				{
+				    if(!IsPlayerInRangeOfPoint(p, 50, BarrerasTren[i][0], BarrerasTren[i][1], BarrerasTren[i][2])) continue;
+					StopAudioStreamForPlayer(p);
+				}
+			    break;
+			}
+		}
+	}
+  return 1;
+  }
