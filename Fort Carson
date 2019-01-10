@@ -1,0 +1,78 @@
+forward CerrarPuertasPrision();
+forward AbrirPuertasPrision();
+
+
+public CerrarPuertasPrision()
+{
+	new Float:x, Float:y, Float:z;
+	for(new i; i < sizeof(PuertaPrision); i++)
+	{
+	    GetDynamicObjectPos(PuertaPrision[i], x, y, z);
+		if(y == 1457.3700) MoveDynamicObject(PuertaPrision[i], x+1.6000, y, z, 1.0);
+		else MoveDynamicObject(PuertaPrision[i], x+1.6000, y, z, 1.0);
+	}
+	SetTimer("AbrirPuertasPrision", 15*60*1000, 0);
+	foreach(new i : Player)
+	{
+		if(PlayerInfo[i][pEnCarcel] == CARCEL_FC && !IsPlayerInArea(i, 169.7606,1434.7888, 201.8874,1442.4369) && !IsPlayerInArea(i, 169.1799,1457.3466, 203.2586,1463.4231))
+		{
+		    SendClientMessage(i, 0xFFFFFFAA, "Tu tiempo de condena aumentó por mal comportamiento.");
+		    PlayerInfo[i][pTiempoCarcel] += (5*60);
+			MandarJugadorACarcel(i, CARCEL_FC);
+		}
+	}
+	return true;
+}
+
+public AbrirPuertasPrision()
+{
+	foreach(new i : Player)
+	{
+	    if(IsPlayerInRangeOfPoint(i, 80, 186.7926,1449.9698,1084.8462) && GetPlayerVirtualWorld(i) == GetInteriorVW("FORTC"))
+	    {
+	        SendClientMessage(i, -1, "Guardia: ¡Tienen 15 minutos para salir al patio!");
+	    }
+	}
+	new Float:x, Float:y, Float:z;
+	for(new i; i < sizeof(PuertaPrision); i++)
+	{
+	    GetDynamicObjectPos(PuertaPrision[i], x, y, z);
+		if(y == 1457.3700) MoveDynamicObject(PuertaPrision[i], x-1.6000, y, z, 1.0);
+		else MoveDynamicObject(PuertaPrision[i], x-1.6000, y, z, 1.0);//+
+	}
+	SetTimer("CerrarPuertasPrision", 15*60*1000, 0);
+	return true;
+}
+
+/* Mapeos */
+/* Las rejas de las celdas */
+PuertaPrision[0] = CreateDynamicObject(19303, 200.32001, 1457.37000, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[15] = CreateDynamicObject(19303, 200.31000, 1442.04004, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[1] = CreateDynamicObject(19303, 200.32001, 1457.37000, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[16] = CreateDynamicObject(19303, 200.31000, 1442.04004, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[2] = CreateDynamicObject(19303, 196.44000, 1457.37000, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[17] = CreateDynamicObject(19303, 196.45000, 1442.04004, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[3] = CreateDynamicObject(19303, 196.44000, 1457.37000, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[18] = CreateDynamicObject(19303, 196.45000, 1442.04004, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[4] = CreateDynamicObject(19303, 192.58000, 1457.37000, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[19] = CreateDynamicObject(19303, 192.59000, 1442.04004, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[5] = CreateDynamicObject(19303, 192.58000, 1457.37000, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[20] = CreateDynamicObject(19303, 192.59000, 1442.04004, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[6] = CreateDynamicObject(19303, 188.72000, 1457.37000, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[21] = CreateDynamicObject(19303, 188.71001, 1442.04004, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[7] = CreateDynamicObject(19303, 188.72000, 1457.37000, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[22] = CreateDynamicObject(19303, 188.71001, 1442.04004, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[8] = CreateDynamicObject(19303, 184.86000, 1457.37000, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[23] = CreateDynamicObject(19303, 184.83000, 1442.04004, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[9] = CreateDynamicObject(19303, 184.86000, 1457.37000, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[24] = CreateDynamicObject(19303, 184.83000, 1442.04004, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[10] = CreateDynamicObject(19303, 181.00000, 1457.37000, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[25] = CreateDynamicObject(19303, 180.97000, 1442.04004, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[11] = CreateDynamicObject(19303, 181.00000, 1457.37000, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[26] = CreateDynamicObject(19303, 180.97000, 1442.04004, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[12] = CreateDynamicObject(19303, 177.14600, 1457.37000, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[27] = CreateDynamicObject(19303, 177.11000, 1442.04004, 1089.34998,   0.00000, 0.00000, 0.00000);
+PuertaPrision[13] = CreateDynamicObject(19303, 177.14000, 1457.37000, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[28] = CreateDynamicObject(19303, 177.11000, 1442.04004, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[14] = CreateDynamicObject(19303, 173.28000, 1457.37000, 1085.06995,   0.00000, 0.00000, 0.00000);
+PuertaPrision[29] = CreateDynamicObject(19303, 173.25000, 1442.04004, 1085.06995,   0.00000, 0.00000, 0.00000);
