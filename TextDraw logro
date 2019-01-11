@@ -1,0 +1,40 @@
+TextDrawCreate(208.000000, 344.000000, ".");
+TextDrawColor(id, 0x88B7CBFF);
+TextDrawLetterSize(id, 22.180044, 0.600000);
+TextDrawSetShadow(id, 1);
+
+TextDrawCreate(204.000000, 304.000000, "LD_BEAT:cring");
+TextDrawBackgroundColor(id, 0x00000000);
+TextDrawBoxColor(id, 0x000000FF);
+TextDrawColor(id, 0xFFFFFFFF);
+TextDrawFont(id, 4);
+TextDrawLetterSize(id, 0.500000, 1.000000);
+TextDrawSetShadow(id, 1);
+TextDrawTextSize(id, 60.000000, 60.000000);
+TextDrawUseBox(id, 1);
+
+TextDrawCreate(323.000000, 322.000000, "~n~_~n~_~n~Compra su primer vehiculo.~n~_");
+TextDrawAlignment(id, 2); 
+TextDrawBoxColor(id, 0x000000FF);
+TextDrawColor(id, 0xFFFFFFFF);
+TextDrawLetterSize(id, 0.379999, 1.299999);
+TextDrawSetShadow(id, 1);
+TextDrawTextSize(id, 3.000000, 202.500000);
+TextDrawUseBox(id, 1);
+
+TextDrawCreate(260.000000, 326.000000, "Sobre ruedas");
+TextDrawColor(id, 0x56CACAFF);
+TextDrawFont(id, 0);
+TextDrawLetterSize(id, 0.559999, 1.700000);
+TextDrawSetShadow(id, 1);
+
+TextDrawCreate(234.000000, 326.000000, "10");
+TextDrawAlignment(id, 2); 
+TextDrawColor(id, 0xFFFFFFFF);
+TextDrawLetterSize(id, 0.409999, 1.700000);
+TextDrawSetShadow(id, 1);
+
+
+PlayAudioStreamForPlayer(playerid, "http://sonidos.fenixzone.net/Logro.mp3", 0.000000, 0.000000, 0.000000, 50.000000, 0);
+GameTextForPlayer(playerid, "~g~] ~w~Logro conseguido ~g~]", 5000, 3);
+SendClientMessage(playerid, 0xA385CBFF, "Conseguiste un logro, puedes ver tus logros y los de otras personas en la web.");
