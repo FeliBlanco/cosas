@@ -33,3 +33,14 @@ SetPlayerAttachedObject(playerid, 7, 2900, 6, 0.231600, 0.032800, 0.007300, 100.
 
 SendClientMessage(playerid, 0xFFFFFFAA, "Compraste un vaso de Sprunk por {00CC00}$65{FFFFFF}. Presiona {DBED15}'~k~~CONVERSATION_YES~'{FFFFFF} para beber.");
 SetPlayerAttachedObject(playerid, 7, 1546, 6, 0.055700, 0.055500, -0.002600, -10.399900, -12.499600, -90.000000, 1.121700, 1.134500, 0.892600, 0x00000000, 0x00000000);
+
+//Vino
+SendClientMessage(playerid, 0xFFFFFFAA, "Compraste un vino, pulsa {DBED15}'~k~~CONVERSATION_YES~'{FFFFFF} para beber.");
+SendClientMessage(playerid, 0x33CC99AA, "Failipe_Blanco compró una botella de vino.");
+SetPlayerAttachedObject(playerid, 7, 1509, 6, 0.070800, 0.051600, 0.041200, -10.399900, -12.499600, -90.000000, 0.861800, 0.728700, 0.708700, 0x00000000, 0x00000000);
+
+//Cerveza
+
+SendClientMessage(playerid, 0xFFFFFFAA, "Compraste una cerveza, pulsa {DBED15}'~k~~CONVERSATION_YES~'{FFFFFF} para beber.");
+SendClientMessage(playerid, 0x33CC99AA, "Failipe_Blanco compró una botella de cerveza.");
+SetPlayerAttachedObject(playerid, 7, 1544, 6, 0.106700, 0.026600, -0.119700, -10.399900, -12.499600, -90.000000, 0.861800, 0.728600, 0.646700, 0x00000000, 0x00000000);
