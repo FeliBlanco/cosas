@@ -1,0 +1,35 @@
+/* Porro */
+
+SetPlayerAttachedObject(playerid, 7, 1485, 6, 0.149600, 0.146400, -0.074700, 161.800003, -96.899498, 109.499901, 1.398700, 1.291400, 1.226600, 0x00000000, 0x00000000);
+
+ /* Pizzeria */
+
+SetPlayerAttachedObject(playerid, 7, 2702, 6, 0.131800, 0.075500, 0.020200, 9.200200, -7.899600, -56.500000, 0.503700, 0.579800, 0.905700, 0x00000000, 0x00000000); //Porcion de pizza
+SetPlayerAttachedObject(playerid, 7, 19571, 6, 0.263900, 0.093800, -0.192800, 65.700203, -74.199898, -93.900101, 1.023900, 0.984800, 0.989900, 0x00000000, 0x00000000);//Pizza completa
+SetPlayerAttachedObject(playerid, 7, 1546, 6, 0.055700, 0.055500, -0.002600, -10.399900, -12.499600, -90.000000, 1.121700, 1.134500, 0.892600, 0x00000000, 0x00000000);//Vaso de sprunk
+SetPlayerAttachedObject(playerid, 7, 19570, 6, 0.123800, 0.038700, -0.164800, -3.699900, -12.499600, -90.000000, 0.503800, 0.579800, 0.905800, 0xFFFFEFBF, 0xFFFFEFBF); //Botella de aquarius
+
+/* 24/7 */
+
+//Cerveza x6 unidades
+
+SendClientMessage(playerid, 0xFFFFFFAA, "Compraste 6 cervezas por {00CC00}$470{FFFFFF}, ahora guárdalas en una heladera.");
+SendClientMessage(playerid, 0xFFFFFFAA, "Tienes que usar {DBED15}/heladera guardar objeto{FFFFFF}, o para tirarlas {DBED15}/tirar objeto");
+SetPlayerAttachedObject(playerid, 7, 2060, 6, 0.289700, -0.058100, -0.007700, 100.800003, -5.299700, 171.899994, 0.406900, 0.560900, 0.851900, 0x00000000, 0x00000000);
+
+// Vino x6 unidades
+
+SendClientMessage(playerid, 0xFFFFFFAA, "Compraste 6 botellas de vino por {00CC00}$590{FFFFFF}, ahora guárdalas en una heladera.");
+SendClientMessage(playerid, 0xFFFFFFAA, "Tienes que usar {DBED15}/heladera guardar objeto{FFFFFF}, o para tirarlas {DBED15}/tirar objeto");
+SetPlayerAttachedObject(playerid, 7, 1271, 6, 0.289700, -0.036100, -0.007600, 100.800003, -5.299600, 171.899902, 0.513800, 0.312900, 0.231800, 0x00000000, 0x00000000);
+
+//Sprunk x4
+
+SendClientMessage(playerid, 0xFFFFFFAA, "Compraste 4 vasos de sprunk por {00CC00}$200{FFFFFF}, ahora guárdalos en una heladera.");
+SendClientMessage(playerid, 0xFFFFFFAA, "Tienes que usar {DBED15}/heladera guardar objeto{FFFFFF}, o para tirar la caja {DBED15}/tirar objeto");
+SetPlayerAttachedObject(playerid, 7, 2900, 6, 0.231600, 0.032800, 0.007300, 100.800003, -5.299600, 171.899902, 0.244900, 0.159900, 0.137900, 0x00000000, 0x00000000);
+
+//Vaso sprunk
+
+SendClientMessage(playerid, 0xFFFFFFAA, "Compraste un vaso de Sprunk por {00CC00}$65{FFFFFF}. Presiona {DBED15}'~k~~CONVERSATION_YES~'{FFFFFF} para beber.");
+SetPlayerAttachedObject(playerid, 7, 1546, 6, 0.055700, 0.055500, -0.002600, -10.399900, -12.499600, -90.000000, 1.121700, 1.134500, 0.892600, 0x00000000, 0x00000000);
